@@ -1,1 +1,1 @@
-# create_app
+# Create app with information about artist
