@@ -1,1 +1,9 @@
-
+def get_markets(token, song_id):
+    """
+    Function returns available markets for song
+    """
+    url = f'https://api.spotify.com/v1/tracks/{song_id}?country=UA'
+    headers = get_auth_header(token)
+    result = get(url, headers=headers)
+    ava_market = json.loads(result.content)['available_markets']
+    return ava_market
