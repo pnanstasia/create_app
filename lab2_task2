@@ -1,1 +1,44 @@
-
+def get_general_info():
+    """
+    Function returns general information about artist 
+    (name, the most popular song and available markets for this song)
+    """
+    print("Enter name of artist")
+    name_of_artist = input(">>> ")
+    token = get_token()
+    artist_id = search_for_artist(token, name_of_artist)
+    if artist_id is None:
+        return None
+    song_id = get_song_id_by_artist_id(token, artist_id)[1]
+    top_song = get_song_id_by_artist_id(token, artist_id)[0]
+    available_markets = get_markets(token, song_id)
+    print("Please, enter what you want to know:")
+    print("'artist name' - if you want to know artists's name")
+    print("'song' - if you want to know artists's top song")
+    print("'artist id' - if you want to know artists's ID")
+    print("'available markets' - if you want to know available markets of top song")
+    print("'all' - if you want to know all information about artist")
+    print("'end' - if you want to finish")
+    info = input(">>> ")
+    while info != 'end':
+        if info == 'artist name':
+            print(name_of_artist)
+            info = input(">>> ")
+        elif info == 'song':
+            print(top_song)
+            info = input(">>> ")
+        elif info == 'artist id':
+            print(artist_id)
+            info = input(">>> ")
+        elif info == 'available markets':
+            print(available_markets)
+            info = input(">>> ")
+        elif info == 'all':
+            print(f'name of artist - {name_of_artist}, top song - {top_song},\
+                   artist ID - {artist_id}, available markets - {available_markets}')
+            info = input(">>> ")
+        else:
+            print("Wrong input")
+            break
+    print("That's all")
+get_general_info()
