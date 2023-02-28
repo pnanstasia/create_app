@@ -1,1 +1,10 @@
-
+def get_song_id_by_artist_id(token, artist_id):
+    """
+    Function returns id of song
+    """
+    url = f'https://api.spotify.com/v1/artists/{artist_id}/top-tracks?country=UA'
+    headers = get_auth_header(token)
+    result = get(url, headers=headers)
+    song = json.loads(result.content)['tracks'][0]['name']
+    song_id = json.loads(result.content)['tracks'][0]['id']
+    return song, song_id
