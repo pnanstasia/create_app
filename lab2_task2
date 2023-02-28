@@ -1,3 +1,9 @@
+import base64
+from requests import post, get
+
+CLIENT_ID = "8b268ec6134a4118974e80e14b0e2152"
+CLIENT_SECRET = "bb837606dd17488a97d5d5a5417a474e"
+
 def get_token():
     """
     Function for getting token from client id and secret
